@@ -11,10 +11,36 @@ let crawler = new Cr.NetflixCrawler("https://www.netflix.com/kr/browse/genre/83"
         Po : / /gi
     });
 
+    for(var i=0;i<url.length;i++){
+        crawler = new Cr.NetflixCrawler(url[0],()=>{
+            let year = crawler.crawlData({
+                T : /.s.{4}c.{6}t.{10}m.{13}i.{4}year.{17}year..[^<]*/gi, 
+                Pr : /.s.{4}c.{6}t.{10}m.{13}i.{4}year.{17}year../gi,
+                Po : / /gi
+            });
+    
+            let actor = crawler.crawlData({
+                T : /.s.{11}t.{26}d.{9}i.{4}s.{9}[^<]*/gi,
+                Pr : /.s.{11}t.{26}d.{9}i.{4}s.{9}/gi,
+                Po : / /gi
+            })
+            console.log(name[i],url[i],year[0],actor[0]);
+        });
+    }
+
+    // for(var i=0;i<url.length;i++){
+    //     crawler = new Cr.NetflixCrawler(url[i]);
+
+    // }
+    
 });
 
 
-
+// var fs = require('fs');
+        
+// fs.writeFile('text.html', crawler.contents, 'utf8', function(err) {
+//     console.log('비동기적 파일 쓰기 완료');
+// });
 
 
 // console.log(crawler.get());
