@@ -45,7 +45,7 @@ let crawler = new Cr.NetflixCrawler("https://www.netflix.com/kr/browse/genre/83"
                 Po : / /gi
             })
             nl.appendNM(name[count],url[count],year[0],actor[0]);
-            console.log(`${count}/${len}`,name[count],url[count],year[0],actor[0]);
+            console.log(`[${count}/${len}] =>`,name[count],url[count],year[0],actor[0]);
             count++;
         });
         
