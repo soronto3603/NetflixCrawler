@@ -22,24 +22,15 @@ class NetflixMovieList{
     }
     appendNM(name,url,year,actor){
         this.nml.push(new NetflixMovie(name,url,year,actor));
+        this.writeJson();
     }
-    appendColumns( col ){
-        if( this.columns_len == null ){
-            this.columns_len = col.length;
-        }else if( this.columns_len != col.length ){
-            console.warn("not correct each columns");
-        }
-        this.coumns.push(col);
-        
-    }
-    assemble(){
-        for(var i=0;i<this.columns_len;i++){
-            this.nml.appendNM(
-                this.columns[0][i],
-                this.columns[1][i],
-                this.columns[2][i],
-                this.columns[3][i]
-                );
-        }
+    writeJson(){
+        var fs = require('fs');
+                
+        fs.writeFile('output.json', JSON.stringify(this.nml), 'utf8', function(err) {
+            // console.log('file write complete');
+        });
     }
 }
+
+module.exports.NetflixMovie = NetflixMovieList;

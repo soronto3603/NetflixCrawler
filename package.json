@@ -4,6 +4,7 @@
   "description": "NetflixCrawler is getting new contents of netflix.",
   "main": "index.js",
   "scripts": {
+    "start":"node ./app/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
